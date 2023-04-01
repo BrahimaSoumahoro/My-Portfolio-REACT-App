@@ -9,9 +9,9 @@ const Layout = () =>   {
         <span className='tags top-tags'> &lt;body&gt;</span>
 
         <outlet     />
-        <span className=  'tags bottom-tags'>&lt;body&gt;
+        <span className=  'tags bottom-tags'>&lt;/body&gt;
         <br />
-        <span className='bottom-tag-html'>&lt;body&gt;</span>
+        <span className='bottom-tag-html'>&lt;/html&gt;</span>
         </span>
     </div>
 </div>
