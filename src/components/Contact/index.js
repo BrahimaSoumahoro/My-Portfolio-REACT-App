@@ -5,10 +5,11 @@ import Loader from 'react-loaders';
 import AnimatedLetters from '../AnimatedLetters';
 import './index.scss';
 import emailjs from '@emailjs/browser'
+import { MapContainer, Popup, TileLayer, Marker} from 'react-leaflet';
 
 const Contact = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
-    const refForm = useRef
+    const refForm = useRef()
     
     useEffect(() => {
     return setTimeout(() => {
@@ -19,19 +20,28 @@ const Contact = () => {
 const sendEmail = (e) => {
     e.preventDefault()
 
-    Emailjs 
+    emailjs 
         .sendForm(
             'gmail',
             'template_qc9ew3x',
             refForm.current,
-            
+            'oEMYP-9_hwlEni0-V'
+        )
+        .then(
+            () => {
+                alert('message successfully sent!')
+                window.location.reload(false)
+            },
+            () => {
+                alert('email unsuccessfully sent, please try agin!')
+            }
         )
 }
 
     return (
         <>
         <div className='container contact-page'>
-            <div className='text-zone'>
+            <div className="text-zone">
                 <h1>
                     <AnimatedLetters 
                         letterClass={letterClass}
@@ -70,13 +80,35 @@ const sendEmail = (e) => {
                         </li>
                         <li>
                             <input type="submit" className='flat- 
-                             button' value="SEND"
+                             button' value="SEND" />
                         </li>
                         </ul>
                     </form>
 
                 </div>
 
+            </div>
+            <div className="info-map">
+                Brahima Soumahoro
+                <br />
+                Côte d'Ivoire, 
+                <br />
+                Abidjan Boite Postal 16161616 02 Abidjan 02 <br />
+                Cocody-ville <br />
+                <span>jbrahism2@gmail.com</span>
+            </div>
+            <div className="map-wrap">
+                <MapContainer center={[5.358700886321646, 
+                     -4.008506284742115]} zoom={15}>
+                    <TileLayer url="https://{s}.title.openstreetmap.org/{z}/{x}/{y}.png" />
+                    <Marker position={[5.358700886321646, 
+                         -4.008506284742115]}>
+                        <Popup>Welcome to my portfolio page, thank 
+                             you</Popup>
+
+                    </Marker>
+
+                </MapContainer>
             </div>
         </div>
         <Loader type="pacman" />
