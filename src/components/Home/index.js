@@ -4,6 +4,7 @@ import LogoTitle from '../../assets/images/logo-s.png';
 import AnimatedLetters from '../AnimatedLetters';
 import Logo from './Logo';
 import './index.scss';
+import Loader from 'react-loaders';
 
 
 const   Home = ()   => {
@@ -16,7 +17,9 @@ useEffect(() => {
         setLetterClass('text-animate-hover')
     }, 4000);
 }, [])
+
     return (
+        <>
         <div className="container home-page">
             <div className="text-zone">
                 <h1>
@@ -35,6 +38,8 @@ useEffect(() => {
             </div>
         <Logo /> 
         </div>
+        <Loader type="pacman"  />
+        </>
       
     );
 }
